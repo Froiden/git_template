@@ -1,0 +1,63 @@
+#!/usr/bin/env php
+<?php
+
+$contents = shell_exec("git status -s");
+
+$lines = explode("\n", $contents);
+
+$forbidden = [
+	".idea",
+	".idea/*",
+	"*.com",
+	"*.class",
+	"*.dll",
+	"*.exe",
+	"*.o",
+	"*.so",
+	"*.7z",
+	"*.dmg",
+	"*.gz",
+	"*.iso",
+	"*.jar",
+	"*.rar",
+	"*.tar",
+	"*.zip",
+	"*.log",
+	"*.sql",
+	"*.sqlite",
+	".DS_Store",
+	".DS_Store?",
+	"._*",
+	".Spotlight-V100",
+	".Trashes",
+	"ehthumbs.db",
+	"Thumbs.db",
+	"PayPal.log",
+	"*~",
+	".env"
+];
+
+$exit = false;
+
+foreach ($lines as $line) {
+	$parts = explode("  ", $line);
+
+	if(count($parts) == 2) {
+		$status = $parts[0];
+		$file = $parts[1];
+
+		$size = filesize($file);
+		$name = basename($file);
+		
+		foreach ($forbidden as $forbid) {
+			if (fnmatch($forbid, $file)) {
+				echo "ERROR: Not allowed to commit '" .$file."'. Add to .gitignore" . PHP_EOL;
+				$exit = true;
+			}
+		}
+	}
+}
+
+if ($exit) {
+	exit(1);
+}

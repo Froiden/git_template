@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+if (empty($argv[1]) || !is_file($argv[1])) {
+    echo 'WARNING: Skipping commit message check because the Git hook was not ' . PHP_EOL
+       . 'passed the commit message file path; normally `.git/COMMIT_EDITMSG`' . PHP_EOL;
+    exit(1);
+}
+
+$contents = file_get_contents($argv[1]);
+
+if (preg_match("/(Feat|Fix|Style|Change|Test|Chore): [^.]+/m", $contents, $output) == 0) {
+	echo "ERROR: Commit message should being with one of following: " . PHP_EOL . PHP_EOL
+		. "    Feat, Fix, Style, Change, Test, Chore" . PHP_EOL . PHP_EOL 
+		. "followed by a colon(:), a space and a short descriptive commit message" . PHP_EOL;
+
+	exit(1);
+}
