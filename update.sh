@@ -11,7 +11,7 @@ if ! [ -d "${HOME}/.git_template/hooks" ]; then
   exit -1;
 fi
 
-find /Volumes/Data/htdocs -type d -not \( -path "*/node_modules/*" -prune \)  -not \( -path "*/vendor/*" -prune \)  -not \( -path "*/.git/*" -prune \)  -not \( -path "*/bower_components/*" -prune \) | while read ch_dir
+find $1 -type d -not \( -path "*/node_modules/*" -prune \)  -not \( -path "*/vendor/*" -prune \)  -not \( -path "*/.git/*" -prune \)  -not \( -path "*/bower_components/*" -prune \) | while read ch_dir
 do
   # echo "Handling the directory ${ch_dir}";
   if ! [ -d "${ch_dir}/.git" ]; then
