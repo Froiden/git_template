@@ -22,4 +22,4 @@ If you create new repository, the hooks will automatically be copied. If you clo
 
 Whenever there is an update to this repository, you can update template and all the repositories with new hooks by running following command:
 
-	~/.git_template/update.sh path_to_repositories_folder
+	git -C ~/.git_template pull origin master && ~/.git_template/update.sh path_to_repositories_folder
