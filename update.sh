@@ -12,7 +12,7 @@ if ! [ -d "${HOME}/.git_template/hooks" ]; then
   exit -1;
 fi
 
-for ch_dir in `find . -type d \( ! -path "*/node_modules/*" ! -path "*/vendor/*" ! -path "*/.git/*" ! -path "*/bower_components/*" \)`
+for ch_dir in `find $1 -type d \( ! -path "*/node_modules/*" ! -path "*/vendor/*" ! -path "*/.git/*" ! -path "*/bower_components/*" \)`
 do
   #echo "Handling the directory ${ch_dir}";
   if ! [ -d "$1/${ch_dir}/.git" ]; then
