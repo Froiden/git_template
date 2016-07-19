@@ -46,8 +46,13 @@ foreach ($lines as $line) {
 		$status = $parts[0];
 		$file = $parts[1];
 
-		$size = filesize($file);
-		$name = basename($file);
+		if ($status !== "D") {
+			$size = filesize($file);
+			$name = basename($file);
+		}
+		else {
+			continue;
+		}
 		
 		foreach ($forbidden as $forbid) {
 			if (fnmatch($forbid, $file)) {
