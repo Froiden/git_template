@@ -34,7 +34,9 @@ $forbidden = [
 	"Thumbs.db",
 	"PayPal.log",
 	"*~",
-	".env"
+	".env",
+	".tscache/*",
+	"typings/*"
 ];
 
 $exit = false;
