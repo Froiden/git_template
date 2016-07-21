@@ -11,7 +11,12 @@ $contents = file_get_contents($argv[1]);
 
 if (preg_match("/(Feat|Fix|Style|Change|Test|Chore): [^.]+/m", $contents, $output) == 0) {
 	echo "ERROR: Commit message should being with one of following: " . PHP_EOL . PHP_EOL
-		. "    Feat, Fix, Style, Change, Test, Chore" . PHP_EOL . PHP_EOL 
+		. "    Feat - Implementing a new feature in this commit (doesn’t matter if its incomplete)". PHP_EOL
+		. "    Fix - Doing a bug fix in this commit". PHP_EOL
+		. "    Style - Making code style changes mainly". PHP_EOL
+		. "    Change - Change in existing implementation. It was not a bug fix neither a new feature". PHP_EOL
+		. "    Test - Anything related to testing". PHP_EOL
+		. "    Chore - Updating grunt tasks, changing .gitignore, etc. Changes not directly related to the code" . PHP_EOL . PHP_EOL 
 		. "followed by a colon(:), a space and a short descriptive commit message" . PHP_EOL;
 
 	exit(1);
