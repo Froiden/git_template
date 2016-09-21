@@ -24,7 +24,6 @@ $forbidden = [
 	"*.zip",
 	"*.log",
 	"*.sql",
-	"*.sqlite",
 	".DS_Store",
 	".DS_Store?",
 	"._*",
@@ -35,8 +34,7 @@ $forbidden = [
 	"PayPal.log",
 	"*~",
 	".env",
-	".tscache/*",
-	"typings/*"
+	".tscache/*"
 ];
 
 $exit = false;
